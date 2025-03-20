@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { bodyFont } from "./config/fonts";
+import { Navbar } from "@/components";
+import { Footer } from "@/components/ui/footer/Footer";
+import { bodyFont } from "@/config/fonts";
 
 export const metadata: Metadata = {
   title: {
@@ -18,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${bodyFont.className} antialiased`}
+        className={`${bodyFont.className} antialiased  bg-gray-700 text-white`}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

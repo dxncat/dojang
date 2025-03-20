@@ -1,6 +1,6 @@
-import { Bebas_Neue, Roboto } from "next/font/google"
+import { Jaini, Roboto } from "next/font/google"
 
-export const titleFont = Bebas_Neue({
+export const titleFont = Jaini({
     subsets: ["latin"],
     weight: ['400']
 })
