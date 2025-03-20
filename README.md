@@ -1,6 +1,6 @@
 # Descripción
 
-
+Este es un proyecto estudiantil desarrollado para la universidad. El objetivo principal es aprender y aplicar conceptos de desarrollo web utilizando Next.js, Prisma y Docker. A través de este proyecto, se busca adquirir experiencia práctica en la creación y gestión de aplicaciones web modernas.
 
 ## Correr en dev
 
