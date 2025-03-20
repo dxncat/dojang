@@ -7,7 +7,7 @@ export function Bento() {
             <section className="grid grid-cols-6 grid-rows-6 gap-4 w-full h-full">
                 <article className="col-span-4 row-span-3 overflow-hidden rounded-xl">
                     <Image
-                        src="/bento.jpg"
+                        src="/bento.webp"
                         alt="Imagen demostrativa de niña entrenando."
                         width={1280}
                         height={540}
@@ -71,8 +71,8 @@ export function Bento() {
                 <article
                     className="col-span-2 row-span-2 col-start-5 row-start-5 text-center p-8 hover:bg-red-500 rounded-xl cursor-pointer transition-all"
                 >
-                    <p className={`-rotate-3 ${titleFont.className} mt-8 text-3xl`}>
-                        !Empieza en el mundo de las hartes marciales con nosotros por solo $120.000/m¡
+                    <p className={`${titleFont.className} mt-8 text-3xl`}>
+                        !Empieza en el mundo de las artes marciales con nosotros por solo $120.000/m¡
                     </p>
                 </article>
             </section>
