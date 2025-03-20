@@ -13,13 +13,13 @@
 6. Ejecutar seed ```npm run seed```
 7. Correr el proyecto ```npm run dev```
 
-### Credenciales de prueba
-
-#### Admin:
+>.[!NOTE]
+Credenciales de administrador
 correo: testadmin@test.com
 contraseña: password
 
-#### Usuario:
+>.[!NOTE]
+Credenciales de usuario
 correo: testuser@test.com
 contraseña: password
 
