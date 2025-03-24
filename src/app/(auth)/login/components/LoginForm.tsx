@@ -15,7 +15,7 @@ export const LoginForm = () => {
 
     useEffect(() => {
         if (state === "Success") {
-            router.replace('/')
+            router.replace('/home')
         }
     }, [state])
 

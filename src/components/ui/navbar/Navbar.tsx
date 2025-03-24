@@ -10,30 +10,10 @@ export function Navbar() {
                     <h1 className={`${titleFont.className} text-3xl`}>DOJANG</h1>
                 </Link>
             </div>
-            <div>
-                <nav>
-                    <ul className="flex space-x-4">
-                        <li>
-                            <Link className="hover:text-red-500 transition-all" href="/nosotros">
-                                Nosotros
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className="hover:text-red-500 transition-all" href="/clases">
-                                Precios
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className="hover:text-red-500 transition-all" href="/contacto">
-                                Contacto
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <Link href={'/login'} className="flex items-center space-x-2">
+
+            <Link href={'/home/perfil'} className="flex items-center space-x-2">
                 <User />
-                Iniciar sesión
+                Perfil
             </Link>
         </div>
     );

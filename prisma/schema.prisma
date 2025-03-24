@@ -13,6 +13,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Range {
+  id          Int            @id @default(autoincrement())
+  nombre      String         @unique
+  descripcion String
+  usuarios    User[]
+  historiales HistoryRange[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  HoursRange  HoursRange[]
+
+  Clase Clase[]
+
+  Horario Horario[]
+}
+
 model Post {
   id        String   @id @default(uuid())
   title     String
@@ -24,14 +39,66 @@ model Post {
   updatedAt DateTime @updatedAt
 }
 
+model HistoryRange {
+  id         String    @id @default(uuid())
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String
+  range      Range     @relation(fields: [rangeId], references: [id])
+  rangeId    Int
+  createdAt  DateTime  @default(now())
+  finishedAt DateTime?
+}
+
+model HoursRange {
+  id      String @id @default(uuid())
+  user    User   @relation(fields: [userId], references: [id])
+  userId  String
+  range   Range  @relation(fields: [rangeId], references: [id])
+  rangeId Int
+  hours   Int    @default(0)
+}
+
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String
-  posts     Post[]
-  password  String
-  isAdmin   Boolean  @default(false)
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String         @id @default(uuid())
+  email         String         @unique
+  name          String
+  password      String
+  posts         Post[]
+  rangoActual   Range?         @relation(fields: [rangoActualId], references: [id])
+  rangoActualId Int?
+  historiales   HistoryRange[]
+  horas         HoursRange[]
+  isAdmin       Boolean        @default(false)
+  isActive      Boolean        @default(true)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  Asistencia Asistencia[]
+}
+
+model Clase {
+  id          Int          @id @default(autoincrement())
+  fecha       DateTime     @default(now())
+  duracion    Int
+  rango       Range        @relation(fields: [rangoId], references: [id])
+  rangoId     Int
+  asistencias Asistencia[]
+}
+
+model Asistencia {
+  id       Int     @id @default(autoincrement())
+  alumno   User    @relation(fields: [alumnoId], references: [id])
+  alumnoId String
+  clase    Clase   @relation(fields: [claseId], references: [id])
+  claseId  Int
+  asistio  Boolean @default(false)
+}
+
+model Horario {
+  id         Int    @id @default(autoincrement())
+  rango      Range  @relation(fields: [rangoId], references: [id])
+  rangoId    Int
+  diaSemana  String
+  horaInicio String
+  horaFin    String
 }

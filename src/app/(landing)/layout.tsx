@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Footer, Navbar } from "@/components";
+import { Footer } from "@/components";
 import { bodyFont } from "@/config/fonts";
+import Header from "./components/Header";
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +22,7 @@ export default function RootLayout({
       <body
         className={`${bodyFont.className} antialiased  bg-gray-700 text-white`}
       >
-        <Navbar />
+        <Header />
         {children}
         <Footer />
       </body>
