@@ -2,6 +2,7 @@ import { getNewsByUserid } from "@/actions";
 import { auth } from "@/auth.config";
 import { NewsComponent } from "@/components";
 import { titleFont } from "@/config/fonts";
+import Link from "next/link";
 
 export default async function ProfilePage() {
 
@@ -41,7 +42,18 @@ export default async function ProfilePage() {
 
             <h2 className="mt-6 text-3xl">Noticias publicadas</h2>
 
-            <NewsComponent news={news} />
+            {
+                news.length > 0 ? (
+                    <NewsComponent news={news} />
+                ) : (
+                    <div className="flex items-center justify-center space-x-6">
+                        <p className="text-2xl">No has publicado noticias</p>
+                        <Link href={'#'} className="btn-primary">
+                            Publicar noticia
+                        </Link>
+                    </div>
+                )
+            }
 
         </div>
     )
