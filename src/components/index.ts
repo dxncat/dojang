@@ -7,3 +7,10 @@ export * from './ui/contact-form/ContactForm';
 
 export * from './News/New';
 export * from './News/News';
+
+export * from './horarios/Calendario';
+export * from './horarios/ListaHorarios';
+export * from './horarios/ItemHorario';
+
+export * from './profile/ProfileCard';
+export * from './profile/HistroryRange';

@@ -1,5 +1,7 @@
 import { getSchedulesByRangeId } from "@/actions";
 import { auth } from "@/auth.config";
+import { ScheduleCalendar } from "@/components";
+import { titleFont } from "@/config/fonts";
 
 export default async function SchedulePage() {
 
@@ -16,19 +18,10 @@ export default async function SchedulePage() {
 
     const schedules = await getSchedulesByRangeId({ rangeId: session.user.rangoActual.id });
 
-    console.log({ schedules });
-
     return (
-        <div className="min-h-screen">
-            <h1>
-                {
-                    schedules.map(schedule => (
-                        <div key={schedule.id}>
-                            <p>{schedule.horaInicio} - {schedule.horaFin}</p>
-                        </div>
-                    ))
-                }
-            </h1>
+        <div className="container mx-auto py-10">
+            <h1 className={`${titleFont.className} antialiased text-4xl mb-13`}>Horarios para: {session.user.rangoActual.nombre}</h1>
+            <ScheduleCalendar schedules={schedules} />
         </div>
     );
 }
