@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 
-export function Map() {
+export const Map = () => {
     const mapRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {

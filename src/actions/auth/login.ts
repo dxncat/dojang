@@ -16,10 +16,29 @@ export async function authenticate(
 
         return 'Success'
 
-    } catch (error) {
-        if ((error as any).type === 'CredentialsSignin') {
+    } catch (error: any) {
+        if ((error).type === 'CredentialsSignin') {
             return 'CredentialsSignin'
         }
         return 'Error al autenticar'
+    }
+}
+
+export const login = async (email: string, password: string) => {
+    try {
+        await signIn('Credentials', {
+            email,
+            password
+        })
+        return ({
+            ok: true,
+            message: "Usuario autenticado correctamente"
+        })
+    } catch (error) {
+        console.log(error)
+        return {
+            ok: false,
+            message: "Error al autenticar el usuario"
+        }
     }
 }

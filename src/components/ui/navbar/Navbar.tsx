@@ -2,7 +2,8 @@ import { titleFont } from "@/config/fonts";
 import { User } from "lucide-react";
 import Link from "next/link";
 
-export function Navbar() {
+export const Navbar = () => {
+
     return (
         <div className="flex items-center justify-between bg-gray-800 p-4">
             <div>

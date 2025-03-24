@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Facebook, Instagram, Youtube } from "lucide-react"
 import { titleFont } from "@/config/fonts"
 
-export function Footer() {
+export const Footer = () => {
     return (
         <footer className="py-12 bg-gray-800 text-gray-300">
             <div className="container px-4 w-full mx-auto">

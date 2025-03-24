@@ -1,7 +1,7 @@
 import { titleFont } from "@/config/fonts";
 import Image from "next/image";
 
-export function Bento() {
+export const Bento = () => {
     return (
         <section className="flex justify-center items-center h-screen p-4">
             <section className="grid grid-cols-6 grid-rows-6 gap-4 w-full h-full">

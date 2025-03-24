@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 
-export function ContactForm() {
+export const ContactForm = () => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",

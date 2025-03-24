@@ -1,7 +1,7 @@
 import { titleFont } from "@/config/fonts";
 import Image from "next/image";
 
-export function Hero() {
+export const Hero = () => {
     return (
         <section className="relative w-full overflow-hidden">
 
