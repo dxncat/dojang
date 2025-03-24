@@ -8,7 +8,7 @@ declare module 'next-auth' {
             name: string;
             image: string;
             rangoActual: {
-                id: string;
+                id: number;
                 nombre: string;
                 description: string;
             };

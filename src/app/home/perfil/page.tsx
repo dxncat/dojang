@@ -1,4 +1,4 @@
-import { getNewsByUserid } from "@/actions";
+import { getNewsByUserid, getRangeHistoryByUser, getSchedulesByRangeId, getUserHours } from "@/actions";
 import { auth } from "@/auth.config";
 import { NewsComponent } from "@/components";
 import { titleFont } from "@/config/fonts";
@@ -9,6 +9,13 @@ export default async function ProfilePage() {
     const session = await auth()
 
     const news = await getNewsByUserid({ authorId: session?.user.id || '' })
+
+    const hours = await getUserHours({ userId: session?.user.id || '', rangeId: session?.user.rangoActual.id || 0 })
+
+    const history = await getRangeHistoryByUser({ userId: session?.user.id || '' })
+
+    console.log({ hours })
+    console.log({ history })
 
     return (
         <div className="min-h-screen p-4">
@@ -32,6 +39,7 @@ export default async function ProfilePage() {
                     <p>Correo electrónico: {session?.user.email}</p>
                     <p>Rango: {session?.user.rangoActual.nombre} - {session?.user.rangoActual.description}</p>
                     <p>miembro desde: {session?.user.createdAt ? new Date(session.user.createdAt).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Fecha no disponible'}</p>
+                    <p>Horas acreditadas: {hours.hours} / 100 - !Animo!, ya solo te faltan {100 - hours.hours} para poder aumentar de rango</p>
                 </div>
                 <div>
                     <img src={session?.user.image} alt="Estudiante de taekwondo" className="rounded-full" width={300} height={300} />
