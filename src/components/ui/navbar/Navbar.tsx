@@ -1,3 +1,4 @@
+import { logout } from "@/actions";
 import { titleFont } from "@/config/fonts";
 import { User } from "lucide-react";
 import Link from "next/link";
@@ -12,10 +13,16 @@ export const Navbar = () => {
                 </Link>
             </div>
 
-            <Link href={'/home/perfil'} className="flex items-center space-x-2">
-                <User />
-                Perfil
-            </Link>
+            <div className="flex items-center space-x-4">
+                <Link href={'/home/perfil'} className="flex items-center space-x-2">
+                    <User />
+                    <span className="text-xl">Perfil</span>
+                </Link>
+
+                <button className="ml-3 text-xl cursor-pointer" onClick={logout}>
+                    Cerrar sesión
+                </button>
+            </div>
         </div>
     );
 }
