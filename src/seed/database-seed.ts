@@ -4,7 +4,6 @@ import prisma from '../lib/prisma';
 async function main() {
     // 1. Eliminar datos existentes
     await prisma.asistencia.deleteMany();
-    await prisma.clase.deleteMany();
     await prisma.horario.deleteMany();
     await prisma.historyRange.deleteMany();
     await prisma.hoursRange.deleteMany();
@@ -104,56 +103,49 @@ async function main() {
         })
     );
 
-    // 8. Crear clases de ejemplo
-    const clasesEjemplo = await Promise.all(
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(async (_, i) => {
-            const rangeId = Math.floor(Math.random() * ranges.length) + 1;
-            return await prisma.clase.create({
-                data: {
-                    fecha: new Date(Date.now() - i * 7 * 24 * 60 * 60 * 1000),
-                    duracion: 60,
-                    rango: { connect: { id: rangeId } }
-                }
-            });
-        })
-    );
+    // 7. Crear horarios con fechas específicas
+    const hoy = new Date();
+    const horariosCreados = await Promise.all(
+        ranges.map(async (range, index) => {
+            // Crear 3 horarios por rango en diferentes fechas
+            return await Promise.all(
+                [0, 7, 14].map(async (diasDespues) => {
+                    const fechaClase = new Date(hoy);
+                    fechaClase.setDate(hoy.getDate() + diasDespues + index);
 
-    // 9. Crear asistencias
-    await Promise.all(
-        clasesEjemplo.map(async (clase) => {
-            const usuariosAsistentes = usuariosCreados.filter(() => Math.random() > 0.3);
-
-            await Promise.all(
-                usuariosAsistentes.map(async (user) => {
-                    await prisma.asistencia.create({
+                    return await prisma.horario.create({
                         data: {
-                            alumno: { connect: { id: user.id } },
-                            clase: { connect: { id: clase.id } },
-                            asistio: Math.random() > 0.2
+                            rango: { connect: { id: range.id } },
+                            fecha: fechaClase,
+                            horaInicio: `${17 + (index % 3)}:00`, // Variar horarios
+                            horaFin: `${18 + (index % 3)}:00`,
+                            status: true
                         }
                     });
                 })
             );
         })
-    );
+    ).then(arr => arr.flat());
 
-    // 10. Crear horarios
-    const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    // 8. Crear asistencias directamente a horarios
     await Promise.all(
-        ranges.map(async (range, index) => {
-            const cantidadHorarios = Math.min(3, Math.floor(index / 5) + 1);
+        horariosCreados.map(async (horario) => {
+            // Seleccionar usuarios cuyo rangoActual coincida con el del horario
+            const usuariosDelRango = await prisma.user.findMany({
+                where: { rangoActualId: horario.rangoId }
+            });
 
-            for (let i = 0; i < cantidadHorarios; i++) {
-                await prisma.horario.create({
-                    data: {
-                        rango: { connect: { id: range.id } },
-                        diaSemana: diasSemana[(index + i) % diasSemana.length],
-                        horaInicio: `${17 + i}:00`,
-                        horaFin: `${18 + i}:00`,
-                        status: true
-                    }
-                });
-            }
+            await Promise.all(
+                usuariosDelRango.map(async (user) => {
+                    await prisma.asistencia.create({
+                        data: {
+                            alumno: { connect: { id: user.id } },
+                            horario: { connect: { id: horario.id } },
+                            asistio: Math.random() > 0.3 // 70% de probabilidad de asistir
+                        }
+                    });
+                })
+            );
         })
     );
 

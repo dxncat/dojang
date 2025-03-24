@@ -22,7 +22,6 @@ model Range {
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
   HoursRange  HoursRange[]
-  Clase       Clase[]
   Horario     Horario[]
 }
 
@@ -74,30 +73,22 @@ model User {
   Asistencia    Asistencia[]
 }
 
-model Clase {
-  id          Int          @id @default(autoincrement())
-  fecha       DateTime     @default(now())
-  duracion    Int
-  rango       Range        @relation(fields: [rangoId], references: [id])
-  rangoId     Int
-  asistencias Asistencia[]
-}
-
 model Asistencia {
-  id       Int     @id @default(autoincrement())
-  alumno   User    @relation(fields: [alumnoId], references: [id])
-  alumnoId String
-  clase    Clase   @relation(fields: [claseId], references: [id])
-  claseId  Int
-  asistio  Boolean @default(false)
+  id        Int     @id @default(autoincrement())
+  alumno    User    @relation(fields: [alumnoId], references: [id])
+  alumnoId  String
+  horario   Horario @relation(fields: [horarioId], references: [id])
+  horarioId Int
+  asistio   Boolean @default(false)
 }
 
 model Horario {
-  id         Int     @id @default(autoincrement())
-  rango      Range   @relation(fields: [rangoId], references: [id])
-  rangoId    Int
-  diaSemana  String
-  horaInicio String
-  horaFin    String
-  status     Boolean @default(true)
+  id          Int          @id @default(autoincrement())
+  rango       Range        @relation(fields: [rangoId], references: [id])
+  rangoId     Int
+  fecha       DateTime
+  horaInicio  String
+  horaFin     String
+  status      Boolean      @default(true)
+  asistencias Asistencia[]
 }

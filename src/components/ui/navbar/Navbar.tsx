@@ -13,6 +13,12 @@ export const Navbar = () => {
                 </Link>
             </div>
 
+            <div>
+                <Link href="/home/horarios">
+                    <button className="text-xl cursor-pointer">Horarios</button>
+                </Link>
+            </div>
+
             <div className="flex items-center space-x-4">
                 <Link href={'/home/perfil'} className="flex items-center space-x-2">
                     <User />
