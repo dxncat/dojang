@@ -73,6 +73,7 @@ export const authConfig: NextAuthConfig = {
                         email: true,
                         name: true,
                         isAdmin: true,
+                        image: true,
                         isActive: true,
                         createdAt: true,
                         password: true,

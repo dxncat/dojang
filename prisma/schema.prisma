@@ -66,12 +66,12 @@ model User {
   rangoActualId Int            @default(1)
   historiales   HistoryRange[]
   horas         HoursRange[]
+  image         String?        @default("https://res.cloudinary.com/dixjvn0t7/image/upload/v1742827190/d1h6jxvbw8lkofag5sy6.jpg")
   isAdmin       Boolean        @default(false)
   isActive      Boolean        @default(true)
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
-
-  Asistencia Asistencia[]
+  Asistencia    Asistencia[]
 }
 
 model Clase {
