@@ -2,6 +2,7 @@ import { getNews } from "@/actions";
 import { auth } from "@/auth.config";
 import { NewsComponent } from "@/components";
 import { titleFont } from "@/config/fonts";
+import Link from "next/link";
 
 export default async function () {
 
@@ -17,9 +18,18 @@ export default async function () {
                 >
                     Ultimas Noticias
                 </h1>
-                {
-
-                }
+                <div className="space-x-4">
+                    {
+                        session?.user.isAdmin && (
+                            <Link href={'#'} className="btn-primary">
+                                Crear Noticia
+                            </Link>
+                        )
+                    }
+                    <Link href={'/noticias'} className="btn-primary">
+                        Ver Todas Las Noticias
+                    </Link>
+                </div>
             </div>
             <NewsComponent news={news} />
         </div>
