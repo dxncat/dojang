@@ -16,16 +16,14 @@ datasource db {
 model Range {
   id          Int            @id @default(autoincrement())
   nombre      String         @unique
-  descripcion String
+  description String
   usuarios    User[]
   historiales HistoryRange[]
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
   HoursRange  HoursRange[]
-
-  Clase Clase[]
-
-  Horario Horario[]
+  Clase       Clase[]
+  Horario     Horario[]
 }
 
 model Post {
@@ -65,7 +63,7 @@ model User {
   password      String
   posts         Post[]
   rangoActual   Range?         @relation(fields: [rangoActualId], references: [id])
-  rangoActualId Int?
+  rangoActualId Int            @default(1)
   historiales   HistoryRange[]
   horas         HoursRange[]
   isAdmin       Boolean        @default(false)
@@ -95,10 +93,11 @@ model Asistencia {
 }
 
 model Horario {
-  id         Int    @id @default(autoincrement())
-  rango      Range  @relation(fields: [rangoId], references: [id])
+  id         Int     @id @default(autoincrement())
+  rango      Range   @relation(fields: [rangoId], references: [id])
   rangoId    Int
   diaSemana  String
   horaInicio String
   horaFin    String
+  status     Boolean @default(true)
 }
