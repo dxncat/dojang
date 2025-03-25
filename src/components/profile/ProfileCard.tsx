@@ -13,17 +13,15 @@ interface Props {
 
 export const ProfileCard = ({ user }: Props) => {
 
-    console.log(user.rangoActual)
-
     return (
-        <div className="md:col-span-1 h-full">
+        <div className="md:col-span-1">
             <Card className="h-full">
                 <CardHeader className="pb-2">
                     <CardTitle>Perfil de Usuario</CardTitle>
                     <CardDescription>Información personal y rango actual</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-col items-center text-center">
-                    <Avatar className="h-32 w-32 mb-4">
+                    <Avatar className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 mb-4">
                         <AvatarImage src={user.image} alt={user.name} />
                         <AvatarFallback>
                             <User className="h-12 w-12" />
@@ -44,6 +42,15 @@ export const ProfileCard = ({ user }: Props) => {
                         <span className="text-sm text-muted-foreground">
                             Miembro desde {format(new Date(user.createdAt), "MMMM yyyy", { locale: es })}
                         </span>
+                    </div>
+
+                    <div className="w-full mt-6 pt-4 border-t">
+                        <h2 className="text-xl">Acciones</h2>
+                        <div className="flex flex-col gap-2 mt-2">
+                            <button className="text-sm text-muted-foreground cursor-pointer">Editar perfil</button>
+                            <button className="text-sm text-muted-foreground cursor-pointer">Editar nombre</button>
+                            <button className="text-sm text-muted-foreground cursor-pointer">Cambiar contraseña</button>
+                        </div>
                     </div>
                 </CardContent>
             </Card>

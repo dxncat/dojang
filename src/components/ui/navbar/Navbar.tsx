@@ -1,34 +1,38 @@
-import { logout } from "@/actions";
 import { titleFont } from "@/config/fonts";
-import { User } from "lucide-react";
 import Link from "next/link";
+import { Menu } from "./Menu";
 
 export const Navbar = () => {
-
     return (
-        <div className="flex items-center justify-between bg-gray-800 p-4">
+        <nav className="flex p-2 justify-between items-center w-full bg-gray-800 ">
+
+            {/* Logo */}
             <div>
-                <Link href="/">
-                    <h1 className={`${titleFont.className} text-3xl`}>DOJANG</h1>
+                <Link href='/'>
+                    <span className={`${titleFont.className} font-bold antialiased cursor-pointer text-2xl`}>
+                        DOJANG
+                    </span>
                 </Link>
             </div>
 
-            <div>
-                <Link href="/home/horarios">
-                    <button className="text-xl cursor-pointer">Horarios</button>
+            {/* Center Menu */}
+            <div className="hidden sm:block space-x-4">
+                <Link className="hover:text-red-500 transition-all" href="/nosotros">
+                    Nosotros
+                </Link>
+
+                <Link className="hover:text-red-500 transition-all" href="/clases">
+                    Precios
+                </Link>
+
+                <Link className="hover:text-red-500 transition-all" href="/contacto">
+                    Contacto
                 </Link>
             </div>
 
-            <div className="flex items-center space-x-4">
-                <Link href={'/home/perfil'} className="flex items-center space-x-2">
-                    <User />
-                    <span className="text-xl">Perfil</span>
-                </Link>
+            {/* Icons */}
+            <Menu />
 
-                <button className="ml-3 text-xl cursor-pointer" onClick={logout}>
-                    Cerrar sesión
-                </button>
-            </div>
-        </div>
+        </nav>
     );
-}
+};

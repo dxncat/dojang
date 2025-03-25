@@ -9,8 +9,8 @@ export default async function ProfilePage() {
     const history = await getRangeHistoryByUser({ userId: session?.user.id || '' })
 
     return (
-        <div className="min-h-screen container mx-auto py-8 px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="container mx-auto py-4 sm:py-6 md:py-8 px-2 sm:px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 {session?.user && <ProfileCard user={session.user} />}
                 <HistoryRange history={history} />
             </div>

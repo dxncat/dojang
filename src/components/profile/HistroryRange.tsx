@@ -21,33 +21,43 @@ export const HistoryRange = ({ history }: Props) => {
                     <CardDescription>Historial completo de progresión en Taekwondo</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <div className="space-y-8">
+                    <div className="space-y-6">
                         {history.map((item, index) => (
-                            <div key={item.id} className="relative pl-8">
+                            <div key={item.id} className="relative pl-6 sm:pl-8">
                                 {/* Línea vertical conectora */}
-                                {index < history.length - 1 && <div className="absolute left-3 top-8 bottom-0 w-0.5 bg-muted" />}
+                                {index < history.length - 1 && (
+                                    <div className="absolute left-2 sm:left-3 top-8 bottom-0 w-0.5 bg-muted" />
+                                )}
 
                                 {/* Punto de la línea de tiempo */}
                                 <div
-                                    className={`absolute left-0 top-1 h-6 w-6 rounded-full flex items-center justify-center ${getBeltColor(item.range.nombre)}`}
+                                    className={`absolute left-0 top-1 h-4 w-4 sm:h-6 sm:w-6 rounded-full flex items-center justify-center ${getBeltColor(item.range.nombre)}`}
                                 >
-                                    {index === history.length - 1 ? <span className="h-2 w-2 rounded-full bg-white" /> : null}
+                                    {index === history.length - 1 ? (
+                                        <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-white" />
+                                    ) : null}
                                 </div>
 
                                 <div className="space-y-2">
-                                    <div className="flex items-center justify-between">
-                                        <Badge className={`${getBeltColor(item.range.nombre)}`}>{item.range.nombre}</Badge>
-                                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                                            <Clock className="h-3.5 w-3.5" />
+                                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-0">
+                                        <Badge className={`${getBeltColor(item.range.nombre)} text-xs sm:text-sm w-fit`}>
+                                            {item.range.nombre}
+                                        </Badge>
+                                        <div className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">
+                                            <Clock className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                                             {calculateDuration(item.createdAt, item.finishedAt)}
                                         </div>
                                     </div>
 
-                                    <p className="text-sm">{item.range.description}</p>
+                                    <p className="text-xs sm:text-sm">{item.range.description}</p>
 
-                                    <div className="flex justify-between text-xs text-muted-foreground">
-                                        <div>Inicio: {formatDate(item.createdAt)}</div>
-                                        <div>Fin: {formatDate(item.finishedAt)}</div>
+                                    <div className="flex flex-col xs:flex-row justify-between text-xs text-muted-foreground gap-1 xs:gap-0">
+                                        <div className="flex items-center gap-1">
+                                            <span className="font-medium">Inicio:</span> {formatDate(item.createdAt)}
+                                        </div>
+                                        <div className="flex items-center gap-1">
+                                            <span className="font-medium">Fin:</span> {formatDate(item.finishedAt)}
+                                        </div>
                                     </div>
                                 </div>
 
