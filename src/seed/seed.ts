@@ -11,6 +11,7 @@ interface seedUser {
     password: string;
     name: string;
     isAdmin?: boolean;
+    image?: string;
 }
 
 interface seedPost {
@@ -132,7 +133,8 @@ export const initialData: InitialData = {
             email: "testadmin@test.com",
             password: bcryptjs.hashSync("password", 10),
             name: "Test Admin",
-            isAdmin: true
+            isAdmin: true,
+            image: "https://res.cloudinary.com/dixjvn0t7/image/upload/v1742827867/lggwj6neyqugf5m38su5.jpg"
         },
         {
             email: "user1@example.com",

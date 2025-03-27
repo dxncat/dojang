@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Footer, Navbar, Provider, SideBar } from "@/components";
 import { bodyFont } from "@/config/fonts";
-import { auth } from "@/auth.config";
-import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
     title: {

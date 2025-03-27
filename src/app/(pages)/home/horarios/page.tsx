@@ -10,7 +10,7 @@ export default async function SchedulePage() {
     if (!session) {
         return {
             redirect: {
-                destination: '/login',
+                destination: '/auth/login',
                 permanent: false
             }
         }

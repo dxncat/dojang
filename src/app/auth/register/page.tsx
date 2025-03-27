@@ -19,7 +19,7 @@ export default function () {
                 <h2 className="text-3xl font-bold mb-2">Ya tienes una cuenta?</h2>
                 <div className="border-2 w-10 border-white inline-block mb-2" />
                 <p className="mb-10">Inicia sesión para desbloquear todas las herramientas que te ofrecemos</p>
-                <Link href={"/login"} className="border-2 border-white rounded-lg px-12 py-2 inline-block font-semibold hover:bg-white hover:text-gray-800 transition-all">
+                <Link href={"/auth/login"} className="border-2 border-white rounded-lg px-12 py-2 inline-block font-semibold hover:bg-white hover:text-gray-800 transition-all">
                     Inicia Sesión
                 </Link>
             </div>

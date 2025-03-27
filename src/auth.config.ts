@@ -5,14 +5,14 @@ import prisma from "./lib/prisma";
 import bcryptjs from "bcryptjs";
 
 const allowedRoutesByRole = {
-    admin: ["/admin", "/home", "/profile"],
-    user: ["/home", "/profile"]
+    admin: ["/admin", "/home", "/home/perfil", "/home/horarios"],
+    user: ["/home", "/home/perfil", "/home/horarios"],
 }
 
 export const authConfig: NextAuthConfig = {
     pages: {
-        signIn: "/login",
-        newUser: "/register",
+        signIn: "/auth/login",
+        newUser: "/auth/register",
     },
     callbacks: {
         authorized({ auth, request: { nextUrl } }) {
@@ -22,13 +22,13 @@ export const authConfig: NextAuthConfig = {
             const requestedRoute = nextUrl.pathname
 
             //rutas publicas (no requieren autenticación)
-            const publicRoutes = ["/", "/login", "/register", "/nosotros", "/contacto", "/precios"]
+            const publicRoutes = ["/", "/auth/login", "/auth/register", "/nosotros", "/contacto", "/precios"]
 
             //permitir acceso a rutas publicas
             if (publicRoutes.includes(requestedRoute)) return true
 
             //verificar si el usuario esta autenticado
-            if (!isLoggedIn) return Response.redirect(new URL('/login', nextUrl))
+            if (!isLoggedIn) return Response.redirect(new URL('/auth/login', nextUrl))
 
             //rutas permitidas protegidas
             const isPostRoute = requestedRoute.startsWith("/post/")
