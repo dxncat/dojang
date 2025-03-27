@@ -4,7 +4,7 @@ import { titleFont } from "@/config/fonts"
 
 export const Footer = () => {
     return (
-        <footer className="py-12 bg-gray-800 text-gray-300">
+        <footer className="py-12 bg-yinmn-blue-100 text-gray-300">
             <div className="container px-4 w-full mx-auto">
                 <div className="grid gap-8 md:grid-cols-3">
                     <div>
@@ -31,8 +31,8 @@ export const Footer = () => {
                     <div>
                         <h3 className="mb-4 text-lg font-bold text-white">Horarios</h3>
                         <ul className="space-y-2">
-                            <li>Lunes - Viernes: 9:00 - 21:00</li>
-                            <li>Sábados: 10:00 - 14:00</li>
+                            <li>Lunes - Viernes: 6:00 - 20:00</li>
+                            <li>Sábados: 8:00 - 14:00</li>
                             <li>Domingos: Cerrado</li>
                         </ul>
                     </div>
@@ -40,9 +40,9 @@ export const Footer = () => {
                     <div>
                         <h3 className="mb-4 text-lg font-bold text-white">Contacto</h3>
                         <ul className="space-y-2">
-                            <li>Calle Principal 123, Ciudad</li>
+                            <li>Calle 52 #13-65, Bogota - Colombia</li>
                             <li>teléfono: (123) 456-7890</li>
-                            <li>Email: info@taekwondoacademy.com</li>
+                            <li>Email: <a href="mailto:info@dojang.com" target="_blank">info@dojang.com</a></li>
                         </ul>
                     </div>
                 </div>

@@ -58,7 +58,7 @@ export function ScheduleCalendar({ schedules }: ScheduleCalendarProps) {
                             booked: scheduleDates,
                         }}
                         modifiersClassNames={{
-                            booked: "bg-red-500 font-bold",
+                            booked: "bg-penn-red-400 font-bold",
                         }}
                         className="rounded-md border"
                     />

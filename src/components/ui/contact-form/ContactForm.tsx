@@ -57,7 +57,7 @@ export const ContactForm = () => {
                         onChange={handleChange}
                         placeholder="Tu nombre"
                         required
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-penn-red-400 focus:border-penn-red-400"
                     />
                 </div>
 
@@ -72,7 +72,7 @@ export const ContactForm = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="Tu teléfono"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-penn-red-400 focus:border-penn-red-400"
                     />
                 </div>
             </div>
@@ -89,7 +89,7 @@ export const ContactForm = () => {
                     onChange={handleChange}
                     placeholder="Tu email"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-penn-red-400 focus:border-penn-red-400"
                 />
             </div>
 
@@ -102,7 +102,7 @@ export const ContactForm = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-penn-red-400 focus:border-penn-red-400 text-balck"
                 >
                     <option value="" disabled>
                         Selecciona un asunto
@@ -127,15 +127,15 @@ export const ContactForm = () => {
                     placeholder="Escribe tu mensaje aquí"
                     rows={5}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-penn-red-400 focus:border-penn-red-400"
                 />
             </div>
 
             <button
                 type="submit"
                 className={`w-full py-2 px-4 rounded-md text-white font-medium transition-colors ${isSubmitting
-                    ? "bg-red-400 cursor-not-allowed"
-                    : "bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                    ? "bg-penn-red-400 cursor-not-allowed"
+                    : "bg-penn-red-400 hover:bg-penn-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-penn-red-400 cursor-pointer"
                     }`}
                 disabled={isSubmitting}
             >

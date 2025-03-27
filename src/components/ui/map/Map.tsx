@@ -22,7 +22,7 @@ export const Map = () => {
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
           <p class="mt-2 text-gray-600">DOJANG</p>
-          <p class="text-sm text-gray-500">Av. Principal 123, Ciudad Deportiva</p>
+          <p class="text-sm text-gray-500">Calle 52 #13-65, Bogota - Colombia</p>
         </div>
       `
             mapElement.appendChild(mapSimulation)

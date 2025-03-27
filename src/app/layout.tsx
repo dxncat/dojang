@@ -19,13 +19,10 @@ export default async function RootLayout({
     children: React.ReactNode;
 }>) {
 
-    const session = await auth();
-    if (!session?.user) redirect('/');
-
     return (
         <html lang="es">
             <body
-                className={`${bodyFont.className} antialiased  bg-gray-700 text-white`}
+                className={`${bodyFont.className} antialiased  bg-black-300 text-white`}
             >
                 <Provider >
                     <Navbar />

@@ -9,7 +9,7 @@ export const Menu = () => {
 
     return (
         <>
-            <button className="m-2 p-2 rounded-md transition-all hover:bg-gray-900 cursor-pointer" onClick={openSideMenu}>
+            <button className="m-2 p-2 rounded-md transition-all hover:bg-yinmn-blue cursor-pointer" onClick={openSideMenu}>
                 Menu
             </button>
         </>

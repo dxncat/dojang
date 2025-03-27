@@ -1,5 +1,62 @@
 @import "tailwindcss";
 
+@theme {
+  /* Black */
+  --color-black: #04090C;
+  --color-black-100: #010202;
+  --color-black-200: #020305;
+  --color-black-300: #020507;
+  --color-black-400: #030709;
+  --color-black-500: #04090c;
+  --color-black-600: #1d4056;
+  --color-black-700: #3577a0;
+  --color-black-800: #6ba8ce;
+  --color-black-900: #b5d3e6;
+  
+  /* Yinmn Blue */
+  --color-yinmn-blue: #0B184E;
+  --color-yinmn-blue-100: #0e0f15;
+  --color-yinmn-blue-200: #1c1f2a;
+  --color-yinmn-blue-300: #2a2e3e;
+  --color-yinmn-blue-400: #373d53;
+  --color-yinmn-blue-500: #464d69;
+  --color-yinmn-blue-600: #606a90;
+  --color-yinmn-blue-700: #868eae;
+  --color-yinmn-blue-800: #aeb4c9;
+  --color-yinmn-blue-900: #d7d9e4;
+  
+  /* Pumpkin */
+  --color-pumpkin-100: #331500;
+  --color-pumpkin-200: #662b00;
+  --color-pumpkin-300: #994000;
+  --color-pumpkin-400: #cc5500;
+  --color-pumpkin-500: #ff6d02;
+  --color-pumpkin-600: #ff8833;
+  --color-pumpkin-700: #ffa666;
+  --color-pumpkin-800: #ffc499;
+  --color-pumpkin-900: #ffe1cc;
+  
+  /* Black Bean */
+  --color-black-bean: #420606;
+  --color-black-bean-100: #0d0101;
+  --color-black-bean-200: #1a0202;
+  --color-black-bean-300: #270404;
+  --color-black-bean-400: #340505;
+  --color-black-bean-500: #420606;
+  --color-black-bean-600: #920e0e;
+  --color-black-bean-700: #e21515;
+  --color-black-bean-800: #f05e5e;
+  --color-black-bean-900: #f8afaf;
+  
+  /* Penn Red */
+  --color-penn-red: #A20100;
+  --color-penn-red-100: #210000;
+  --color-penn-red-200: #410000;
+  --color-penn-red-300: #620000;
+  --color-penn-red-400: #830000;
+  --color-penn-red-500: #a20100;
+}
+
 .btn-primary {
     @apply border-2 border-white rounded-lg px-12 py-2 inline-block font-semibold hover:bg-white hover:text-gray-800 transition-all cursor-pointer
 }

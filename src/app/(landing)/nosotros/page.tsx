@@ -25,7 +25,7 @@ export default function Home() {
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio, quasi. Harum quae fugit doloremque at mollitia quidem eveniet, quo, alias eos, expedita pariatur. Enim tempore est quasi voluptatum ut? Repellat.
                 </p>
             </div>
-            <div className="flex items-center row-span-5 col-start-4 overflow-hidden rounded-xl">
+            <div className="md:flex items-center row-span-5 col-start-4 overflow-hidden rounded-xl">
                 <Image
                     src={'/us.webp'}
                     alt="Imagen de nosotros"

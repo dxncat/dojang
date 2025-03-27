@@ -4,7 +4,7 @@ import { Menu } from "./Menu";
 
 export const Navbar = () => {
     return (
-        <nav className="flex p-2 justify-between items-center w-full bg-gray-800 ">
+        <nav className="flex p-2 justify-between items-center w-full bg-black-500 ">
 
             {/* Logo */}
             <div>
@@ -17,15 +17,15 @@ export const Navbar = () => {
 
             {/* Center Menu */}
             <div className="hidden sm:block space-x-4">
-                <Link className="hover:text-red-500 transition-all" href="/nosotros">
+                <Link className="hover:text-penn-red-400 transition-all" href="/nosotros">
                     Nosotros
                 </Link>
 
-                <Link className="hover:text-red-500 transition-all" href="/clases">
+                <Link className="hover:text-penn-red-400 transition-all" href="/clases">
                     Precios
                 </Link>
 
-                <Link className="hover:text-red-500 transition-all" href="/contacto">
+                <Link className="hover:text-penn-red-400 transition-all" href="/contacto">
                     Contacto
                 </Link>
             </div>
