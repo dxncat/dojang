@@ -99,7 +99,7 @@ export const RegisterForm = () => {
 
             <div className="text-center text-gray-400">
                 Ya una cuenta?
-                <Link href={'/auth/register'} className="font-bold text-penn-red-500 hover:text-penn-red-400"> Inicia sesión aquí</Link>
+                <Link href={'/auth/login'} className="font-bold text-penn-red-500 hover:text-penn-red-400"> Inicia sesión aquí</Link>
             </div>
 
         </form>
