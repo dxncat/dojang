@@ -2,23 +2,18 @@
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { useMobile } from "@/hooks/use-mobile"
+import { Pricing } from "@/interfaces"
 
 interface TaekwondoPackagesCarouselProps {
-    packages: TaekwondoPackage[]
+    packages: Pricing[]
 }
 
 export function TaekwondoPackagesCarousel({ packages }: TaekwondoPackagesCarouselProps) {
-    const { toast } = useToast()
     const isMobile = useMobile()
 
     const handleSelectPackage = (id: number) => {
         const selectedPackage = packages.find((pkg) => pkg.id === id)
-        if (selectedPackage) {
-            toast({
-                title: "Paquete seleccionado",
-                description: `Has seleccionado el paquete "${selectedPackage.name}" por ${formatPrice(selectedPackage.price)}`,
-            })
-        }
+        console.log(selectedPackage)
     }
 
     return (
