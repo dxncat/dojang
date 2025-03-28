@@ -63,6 +63,7 @@ export const SideBar = () => {
 
                         <Link
                             href='/home/horarios'
+                            onClick={closeSideMenu}
                             className='flex items-center mt-10 p-2 hover:bg-yinmn-blue rounded transition-all'>
                             <Clock size={30} />
                             <span className='ml-3 text-xl'>Horarios</span>

@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { useActionState, useEffect } from 'react'
 import { useFormStatus } from 'react-dom'
 import React from 'react'
+import Link from 'next/link';
 
 export const LoginForm = () => {
 
@@ -20,15 +21,39 @@ export const LoginForm = () => {
     }, [state])
 
     return (
-        <form className='flex flex-col items-center' action={dispatch}>
-            <div className='flex items-center bg-gray-100 w-64 p-2 mb-3 rounded-lg'>
-                <Mail className='text-gray-400 mr-2' />
-                <input type="email" name='email' placeholder='Correo' className='text-gray-900 outline-none text-sm flex-1' />
+        <div className="flex flex-col justify-center p-8 md:p-14">
+            <span className="mb-3 text-4xl font-bold">Bienvenido de nuevo</span>
+            <span className="font-light text-gray-400 mb-8">
+                por favor inicia sesión para continuar
+            </span>
+            <div className="py-4">
+                <span className="mb-2 text-md">Email</span>
+                <input
+                    type="text"
+                    className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+                    name="email"
+                    id="email"
+                />
             </div>
-            <div className='flex items-center bg-gray-100 w-64 p-2 rounded-lg'>
-                <Key className='text-gray-400 mr-2' />
-                <input type="password" name='password' placeholder='Contraseña' className='text-gray-900 outline-none text-sm flex-1' />
+            <div className="py-4">
+                <span className="mb-2 text-md">Password</span>
+                <input
+                    type="password"
+                    name="pass"
+                    id="pass"
+                    className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+                />
             </div>
+            <div className="flex justify-between w-full py-4">
+                <div className="mr-24">
+                    <input type="checkbox" name="ch" id="ch" className="mr-2" />
+                    <span className="text-md">Remember for 30 days</span>
+                </div>
+                <span className="font-bold text-md">Forgot password</span>
+            </div>
+
+
+
 
             {state === "CredentialsSignin" && (
                 <div className="flex flex-row mb-2">
@@ -38,7 +63,13 @@ export const LoginForm = () => {
             )}
 
             <LoginButton />
-        </form>
+
+            <div className="text-center text-gray-400">
+                Aun no tienes una cuenta?
+                <Link href={'/auth/register'} className="font-bold text-penn-red-500 hover:text-penn-red-400"> Regístrate aquí</Link>
+            </div>
+
+        </div>
     )
 }
 

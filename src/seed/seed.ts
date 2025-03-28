@@ -14,6 +14,13 @@ interface seedUser {
     image?: string;
 }
 
+interface seedPackages {
+    name: string;
+    hours: number;
+    price: number;
+    description: string;
+}
+
 interface seedPost {
     title: string;
     content: string;
@@ -23,9 +30,94 @@ interface InitialData {
     ranges: seedRange[];
     users: seedUser[];
     posts: seedPost[];
+    packages: seedPackages[];
 }
 
 export const initialData: InitialData = {
+    packages: [
+        {
+            name: "Iniciación Taekwondo (50 horas)",
+            hours: 50,
+            price: 450000,
+            description: `Paquete ideal para dar tus primeros pasos en el arte marcial. Incluye:
+    - Acceso ilimitado a clases grupales hasta completar las 50 horas
+    - Uniforme de entrenamiento básico (dobok blanco)
+    - Evaluación técnica inicial sin costo
+    - Sesión de inducción personalizada
+    - Manual digital de fundamentos del Taekwondo WT
+    - Las horas son acumulables y no expiran
+    - Posibilidad de complementar con clases privadas (valor adicional)`
+        },
+        {
+            name: "Ascenso Básico (100 horas)",
+            hours: 100,
+            price: 850000,
+            description: `Diseñado específicamente para tu primer ascenso de rango:
+    - Todas las horas necesarias para pasar de 10° a 9° Kup
+    - Kit de inicio (vendas y protector bucal)
+    - Acceso prioritario a seminarios básicos
+    - Asesoría permanente en el desarrollo técnico
+    - Derecho a presentar examen de ascenso incluido
+    - Horas acumulables sin límite de tiempo
+    - Reporte detallado de progreso cada 25 horas`
+        },
+        {
+            name: "Avance Continuo (200 horas)",
+            hours: 200,
+            price: 1500000,
+            description: `Para alumnos comprometidos con su progreso:
+    - Paquete de horas permanente sin caducidad
+    - 2 sesiones de técnicas especiales con maestros certificados
+    - Acceso a material multimedia exclusivo
+    - Descuento del 15% en equipamiento oficial
+    - Evaluaciones periódicas de desempeño
+    - Posibilidad de transferir horas a otro alumno (costo administrativo)
+    - Las horas no utilizadas se mantienen indefinidamente`
+        },
+        {
+            name: "Excelencia Marcial (300 horas)",
+            hours: 300,
+            price: 2100000,
+            description: `Experiencia de entrenamiento premium:
+    - Horas permanentes para uso ilimitado en el tiempo
+    - 4 clases privadas incluidas con maestros titulados
+    - Uniforme de competencia de regalo
+    - Acceso vitalicio a la biblioteca técnica digital
+    - Participación garantizada en torneos internos
+    - Descuentos del 20% en eventos especiales
+    - Asesoría nutricional básica permanente
+    - Las horas adquiridas nunca pierden validez`
+        },
+        {
+            name: "Maestría (500 horas)",
+            hours: 500,
+            price: 3200000,
+            description: `Camino hacia el cinturón negro:
+    - Inversión permanente en tu desarrollo marcial
+    - 8 sesiones privadas con Grand Master
+    - Kit completo de protección profesional
+    - Acceso ilimitado a todas las clases grupales
+    - Certificación internacional incluida
+    - Derecho a asistir como observador a exámenes de grados
+    - Horas transferibles a familiares directos
+    - Garantía de por vida sobre las horas adquiridas`
+        },
+        {
+            name: "Legado Familiar (800 horas)",
+            hours: 800,
+            price: 4800000,
+            description: `Para familias que ven el Taekwondo como estilo de vida:
+    - Horas de uso permanente para hasta 4 familiares
+    - 16 clases privadas familiares incluidas
+    - 4 uniformes premium de alta gama
+    - Membresía dorada con beneficios exclusivos
+    - Acceso a eventos cerrados para miembros
+    - Fotografía profesional familiar anual
+    - Asesoría legal deportiva permanente
+    - Las horas nunca caducan y son totalmente transferibles
+    - Programa de lealtad con recompensas acumulativas`
+        }
+    ],
     ranges: [
         {
             id: 1,

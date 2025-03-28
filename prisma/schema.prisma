@@ -17,27 +17,37 @@ model Range {
   id          Int            @id @default(autoincrement())
   nombre      String         @unique
   description String
-  usuarios    User[]
-  historiales HistoryRange[]
+  minHours    Int            @default(100) // Horas mínimas requeridas para este rango
+  users       User[]
+  histories   HistoryRange[]
+  hoursRanges HoursRange[]
+  schedules   Schedule[]
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
-  HoursRange  HoursRange[]
-  Horario     Horario[]
 }
 
-model Post {
-  id        String   @id @default(uuid())
-  title     String
-  content   String
-  published Boolean  @default(true)
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model User {
+  id               String            @id @default(uuid())
+  email            String            @unique
+  name             String
+  password         String            @db.VarChar(255)
+  posts            Post[]
+  currentRange     Range?            @relation(fields: [currentRangeId], references: [id])
+  currentRangeId   Int?
+  histories        HistoryRange[]
+  hoursRanges      HoursRange[]
+  image            String?           @default("https://res.cloudinary.com/...")
+  isAdmin          Boolean           @default(false)
+  isActive         Boolean           @default(true)
+  attendances      Attendance[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  packagePurchases PackagePurchase[] // Historial de compras
+  availableHours   Int               @default(0) // Horas disponibles totales
 }
 
 model HistoryRange {
-  id         String    @id @default(uuid())
+  id         Int       @id @default(autoincrement())
   user       User      @relation(fields: [userId], references: [id])
   userId     String
   range      Range     @relation(fields: [rangeId], references: [id])
@@ -47,7 +57,7 @@ model HistoryRange {
 }
 
 model HoursRange {
-  id      String @id @default(uuid())
+  id      Int    @id @default(autoincrement())
   user    User   @relation(fields: [userId], references: [id])
   userId  String
   range   Range  @relation(fields: [rangeId], references: [id])
@@ -55,40 +65,56 @@ model HoursRange {
   hours   Int    @default(0)
 }
 
-model User {
-  id            String         @id @default(uuid())
-  email         String         @unique
-  name          String
-  password      String
-  posts         Post[]
-  rangoActual   Range?         @relation(fields: [rangoActualId], references: [id])
-  rangoActualId Int            @default(1)
-  historiales   HistoryRange[]
-  horas         HoursRange[]
-  image         String?        @default("https://res.cloudinary.com/dixjvn0t7/image/upload/v1742827190/d1h6jxvbw8lkofag5sy6.jpg")
-  isAdmin       Boolean        @default(false)
-  isActive      Boolean        @default(true)
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
-  Asistencia    Asistencia[]
+model Package {
+  id          Int               @id @default(autoincrement())
+  name        String // "Paquete 100 horas"
+  hours       Int // 100, 300, 500
+  price       Float
+  description String?
+  purchases   PackagePurchase[]
+  createdAt   DateTime          @default(now())
 }
 
-model Asistencia {
-  id        Int     @id @default(autoincrement())
-  alumno    User    @relation(fields: [alumnoId], references: [id])
-  alumnoId  String
-  horario   Horario @relation(fields: [horarioId], references: [id])
-  horarioId Int
-  asistio   Boolean @default(false)
-}
-
-model Horario {
+model Schedule {
   id          Int          @id @default(autoincrement())
-  rango       Range        @relation(fields: [rangoId], references: [id])
-  rangoId     Int
-  fecha       DateTime
-  horaInicio  String
-  horaFin     String
-  status      Boolean      @default(true)
-  asistencias Asistencia[]
+  range       Range        @relation(fields: [rangeId], references: [id])
+  rangeId     Int
+  date        DateTime // Usamos DateTime para manejar fecha+hora
+  startTime   String // Ej: "10:00"
+  endTime     String // Ej: "12:00"
+  isActive    Boolean      @default(true)
+  attendances Attendance[]
+}
+
+model Attendance {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  schedule   Schedule @relation(fields: [scheduleId], references: [id])
+  scheduleId Int
+  attended   Boolean  @default(false)
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  published Boolean  @default(true)
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PackagePurchase {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  package   Package  @relation(fields: [packageId], references: [id])
+  packageId Int
+  hours     Int // Horas compradas (duplicado por si el paquete cambia después)
+  remaining Int // Horas disponibles
+  price     Float // Precio pagado (snapshot)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
