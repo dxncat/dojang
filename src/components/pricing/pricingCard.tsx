@@ -2,22 +2,14 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Button } from "@/components/ui/button"
 import { Clock, DollarSign } from "lucide-react"
 import { formatCurrency } from "@/utils"
+import { Pricing } from "@/interfaces"
 
-interface TaekwondoPackage {
-    id: number
-    name: string
-    hours: number
-    price: number
-    description: string
-    createdAt: Date
-}
-
-interface TaekwondoPackageCardProps {
-    pkg: TaekwondoPackage
+interface Props {
+    pkg: Pricing
     onSelect?: (id: number) => void
 }
 
-export function POricingCard({ pkg, onSelect }: TaekwondoPackageCardProps) {
+export function PricingCard({ pkg, onSelect }: Props) {
     const descriptionLines = pkg.description.split("\n").filter((line) => line.trim() !== "")
 
     return (

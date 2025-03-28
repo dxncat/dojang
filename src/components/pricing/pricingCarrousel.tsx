@@ -3,12 +3,13 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { useMobile } from "@/hooks/use-mobile"
 import { Pricing } from "@/interfaces"
+import { PricingCard } from "./pricingCard"
 
-interface TaekwondoPackagesCarouselProps {
+interface Props {
     packages: Pricing[]
 }
 
-export function TaekwondoPackagesCarousel({ packages }: TaekwondoPackagesCarouselProps) {
+export function TaekwondoPackagesCarousel({ packages }: Props) {
     const isMobile = useMobile()
 
     const handleSelectPackage = (id: number) => {
@@ -31,7 +32,7 @@ export function TaekwondoPackagesCarousel({ packages }: TaekwondoPackagesCarouse
                     {packages.map((pkg) => (
                         <CarouselItem key={pkg.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
                             <div className="h-full">
-                                <TaekwondoPackageCard pkg={pkg} onSelect={handleSelectPackage} />
+                                <PricingCard pkg={pkg} onSelect={handleSelectPackage} />
                             </div>
                         </CarouselItem>
                     ))}
