@@ -1,6 +1,6 @@
 "use client";
 
-import { CircleAlert, Key, Mail } from 'lucide-react'
+import { CircleAlert } from 'lucide-react'
 import { authenticate } from '@/actions'
 import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
@@ -21,7 +21,7 @@ export const LoginForm = () => {
     }, [state])
 
     return (
-        <div className="flex flex-col justify-center p-8 md:p-14">
+        <form action={dispatch} className="flex flex-col justify-center p-8 md:p-14">
             <span className="mb-3 text-4xl font-bold">Bienvenido de nuevo</span>
             <span className="font-light text-gray-400 mb-8">
                 por favor inicia sesión para continuar
@@ -29,31 +29,19 @@ export const LoginForm = () => {
             <div className="py-4">
                 <span className="mb-2 text-md">Email</span>
                 <input
-                    type="text"
+                    type="email"
                     className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
                     name="email"
-                    id="email"
                 />
             </div>
             <div className="py-4">
                 <span className="mb-2 text-md">Password</span>
                 <input
                     type="password"
-                    name="pass"
-                    id="pass"
+                    name="password"
                     className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
                 />
             </div>
-            <div className="flex justify-between w-full py-4">
-                <div className="mr-24">
-                    <input type="checkbox" name="ch" id="ch" className="mr-2" />
-                    <span className="text-md">Remember for 30 days</span>
-                </div>
-                <span className="font-bold text-md">Forgot password</span>
-            </div>
-
-
-
 
             {state === "CredentialsSignin" && (
                 <div className="flex flex-row mb-2">
@@ -69,7 +57,7 @@ export const LoginForm = () => {
                 <Link href={'/auth/register'} className="font-bold text-penn-red-500 hover:text-penn-red-400"> Regístrate aquí</Link>
             </div>
 
-        </div>
+        </form>
     )
 }
 

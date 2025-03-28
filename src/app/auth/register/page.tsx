@@ -1,27 +1,26 @@
-import Link from "next/link";
-import { titleFont } from "@/config/fonts";
 import { RegisterForm } from "./components/RegisterForm";
 
 export default function () {
     return (
-        <div className='bg-gray-700 rounded-2xl shadow-2xl flex w-2/3 max-w-4xl'>
-            <div className="w-3/5 p-5">
-                <div className={`text-left font-bold ${titleFont.className}`}>
-                    DOJANG
+        <div className="flex items-center justify-center min-h-screen">
+            <div
+                className="relative flex flex-col m-6 space-y-8 bg-yinmn-blue shadow-2xl rounded-2xl md:flex-row md:space-y-0"
+            >
+                <div className="relative">
+                    <img
+                        src="/auth.webp"
+                        alt="imagen representativa de taekwondo"
+                        className="w-[400px] h-full hidden rounded-r-2xl md:block object-cover"
+                    />
+                    <div
+                        className="absolute hidden bottom-10 right-6 p-6 bg-white/30 backdrop-blur-sm rounded drop-shadow-lg md:block"
+                    >
+                        <span className="text-black text-xl text-pretty">
+                            Todo empieza con un solo paso
+                        </span>
+                    </div>
                 </div>
-                <div className="py-10">
-                    <h2 className="text-3xl font-bold mb-2">Inicia Sesión</h2>
-                    <div className="border-2 w-10 border-white inline-block mb-2" />
-                    <RegisterForm />
-                </div>
-            </div>
-            <div className="w-2/5 rounded-tr-2xl rounded-br-2xl bg-gray-800 py-36 px-12">
-                <h2 className="text-3xl font-bold mb-2">Ya tienes una cuenta?</h2>
-                <div className="border-2 w-10 border-white inline-block mb-2" />
-                <p className="mb-10">Inicia sesión para desbloquear todas las herramientas que te ofrecemos</p>
-                <Link href={"/auth/login"} className="border-2 border-white rounded-lg px-12 py-2 inline-block font-semibold hover:bg-white hover:text-gray-800 transition-all">
-                    Inicia Sesión
-                </Link>
+                <RegisterForm />
             </div>
         </div>
     );

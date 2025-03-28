@@ -73,36 +73,30 @@ export const SideBar = () => {
                     </>
                 )}
 
-                {
-                    !isAuthenticated && (
-                        <>
-                            <Link
-                                href='/nosotros'
-                                onClick={closeSideMenu}
-                                className='flex items-center mt-10 p-2 hover:bg-yinmn-blue rounded transition-all md:hidden'>
-                                <Info size={30} />
-                                <span className='ml-3 text-xl'>Nosotros</span>
-                            </Link>
+                <Link
+                    href='/nosotros'
+                    onClick={closeSideMenu}
+                    className='flex items-center mt-10 p-2 hover:bg-yinmn-blue rounded transition-all md:hidden'>
+                    <Info size={30} />
+                    <span className='ml-3 text-xl'>Nosotros</span>
+                </Link>
 
-                            <Link
-                                href='/precios'
-                                onClick={closeSideMenu}
-                                className='flex items-center mt-10 p-2 hover:bg-yinmn-blue rounded transition-all md:hidden'>
-                                <CircleDollarSign size={30} />
-                                <span className='ml-3 text-xl'>Precios</span>
-                            </Link>
+                <Link
+                    href='/precios'
+                    onClick={closeSideMenu}
+                    className='flex items-center mt-10 p-2 hover:bg-yinmn-blue rounded transition-all md:hidden'>
+                    <CircleDollarSign size={30} />
+                    <span className='ml-3 text-xl'>Precios</span>
+                </Link>
 
-                            <Link
-                                href='/contacto'
-                                onClick={closeSideMenu}
-                                className='flex items-center mt-10 p-2 hover:bg-yinmn-blue rounded transition-all md:hidden'>
-                                <Mail size={30} />
-                                <span className='ml-3 text-xl'>Contacto</span>
-                            </Link>
-                            <div className='flex md:hidden w-full h-px bg-gray-200 my-10' />
-                        </>
-                    )
-                }
+                <Link
+                    href='/contacto'
+                    onClick={closeSideMenu}
+                    className='flex items-center mt-10 p-2 hover:bg-yinmn-blue rounded transition-all md:hidden'>
+                    <Mail size={30} />
+                    <span className='ml-3 text-xl'>Contacto</span>
+                </Link>
+                <div className='flex md:hidden w-full h-px bg-gray-200 my-10' />
 
                 {/* Admin */}
                 {

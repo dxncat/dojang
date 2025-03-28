@@ -1,24 +1,107 @@
-import { Key, Mail, User } from 'lucide-react'
+"use client";
+
+import { CircleAlert } from 'lucide-react'
+import clsx from 'clsx'
+import { useState } from 'react'
 import React from 'react'
+import Link from 'next/link';
+import { useForm } from 'react-hook-form'
+import { login, registerUser } from '@/actions';
+import { titleFont } from '@/config/fonts';
+
+type FormInputs = {
+    name: string;
+    email: string;
+    password: string;
+}
 
 export const RegisterForm = () => {
+
+    const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>()
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const onSubmit = async (data: FormInputs) => {
+        setErrorMessage('')
+        const { name, email, password } = data
+        const res = await registerUser(name, email, password)
+
+        if (!res.ok) {
+            setErrorMessage(res.message)
+            return
+        }
+
+        await login(email.toLowerCase(), password)
+        window.location.replace('/')
+    }
+
     return (
-        <form className='flex flex-col items-center'>
-            <div className='flex items-center bg-gray-100 w-64 p-2 mb-3 rounded-lg'>
-                <User className='text-gray-400 mr-2' />
-                <input type="text" name='name' placeholder='Nombre Completo' className='text-gray-900 outline-none text-sm flex-1' />
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center p-8 md:p-14">
+            <span className="mb-3 text-4xl font-bold">Bienvenido a <span className={`${titleFont.className} antialiased`}>DOJANG</span></span>
+            <span className="font-light text-gray-400 mb-8">
+                por favor crea una cuenta para ser parte de nuestra familia
+            </span>
+
+            <div className="py-4">
+                <span className="mb-2 text-md">Nombre Completo</span>
+                <input
+                    type="text"
+                    className={
+                        clsx(
+                            "w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500",
+                            {
+                                'border-red-500': !!errors.email
+                            }
+                        )
+                    }
+                    autoFocus
+                    {...register("name", { required: true })}
+                />
             </div>
-            <div className='flex items-center bg-gray-100 w-64 p-2 mb-3 rounded-lg'>
-                <Mail className='text-gray-400 mr-2' />
-                <input type="email" name='email' placeholder='Correo' className='text-gray-900 outline-none text-sm flex-1' />
+
+            <div className="py-4">
+                <span className="mb-2 text-md">Email</span>
+                <input
+                    type="email"
+                    className={
+                        clsx(
+                            "w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500",
+                            {
+                                'border-red-500': !!errors.email
+                            }
+                        )
+                    }
+                    {...register("email", { required: true })}
+                />
             </div>
-            <div className='flex items-center bg-gray-100 w-64 p-2 rounded-lg'>
-                <Key className='text-gray-400 mr-2' />
-                <input type="password" name='password' placeholder='Contraseña' className='text-gray-900 outline-none text-sm flex-1' />
+
+            <div className="py-4">
+                <span className="mb-2 text-md">Email</span>
+                <input
+                    type="password"
+                    className={
+                        clsx(
+                            "w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500",
+                            {
+                                'border-red-500': !!errors.email
+                            }
+                        )
+                    }
+                    {...register("password", { required: true })}
+                />
             </div>
-            <button className="border-2 border-white rounded-lg px-12 py-2 inline-block font-semibold mt-16 hover:bg-white hover:text-gray-800 transition-all cursor-pointer">
-                Regístrate
+
+            <span className="text-red-500">{errorMessage}</span>
+
+            <button
+                className="btn-login">
+                Crear cuenta
             </button>
+
+            <div className="text-center text-gray-400">
+                Ya una cuenta?
+                <Link href={'/auth/register'} className="font-bold text-penn-red-500 hover:text-penn-red-400"> Inicia sesión aquí</Link>
+            </div>
+
         </form>
     )
 }

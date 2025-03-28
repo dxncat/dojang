@@ -21,7 +21,7 @@ export const Navbar = () => {
                     Nosotros
                 </Link>
 
-                <Link className="hover:text-penn-red-400 transition-all" href="/clases">
+                <Link className="hover:text-penn-red-400 transition-all" href="/precios">
                     Precios
                 </Link>
 
