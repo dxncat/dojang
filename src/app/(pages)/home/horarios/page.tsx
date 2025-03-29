@@ -16,11 +16,11 @@ export default async function SchedulePage() {
         }
     }
 
-    const schedules = await getSchedulesByRangeId({ rangeId: session.user.rangoActual.id });
+    const schedules = await getSchedulesByRangeId({ rangeId: session.user.currentRange.id });
 
     return (
         <div className="container mx-auto py-10 px-4">
-            <h1 className={`${titleFont.className} antialiased text-4xl mb-13`}>Horarios para: {session.user.rangoActual.nombre}</h1>
+            <h1 className={`${titleFont.className} antialiased text-4xl mb-13`}>Horarios para: {session.user.currentRange.nombre}</h1>
             <ScheduleCalendar schedules={schedules} />
         </div>
     );

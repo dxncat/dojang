@@ -17,12 +17,12 @@ export function ScheduleCalendar({ schedules }: ScheduleCalendarProps) {
     const [selectedSchedules, setSelectedSchedules] = useState<Schedule[]>(schedules)
 
     // Convertir las fechas de string a objetos Date
-    const scheduleDates = schedules.map((schedule) => new Date(schedule.fecha))
+    const scheduleDates = schedules.map((schedule) => new Date(schedule.date))
 
     // Función para obtener los horarios de una fecha específica
     const getSchedulesForDate = (day: Date) => {
         return schedules.filter((schedule) => {
-            const scheduleDate = new Date(schedule.fecha)
+            const scheduleDate = new Date(schedule.date)
             return (
                 scheduleDate.getDate() === day.getDate() &&
                 scheduleDate.getMonth() === day.getMonth() &&

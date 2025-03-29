@@ -10,7 +10,7 @@ interface ScheduleItemProps {
 }
 
 export function ScheduleItem({ schedule, showDate = true }: ScheduleItemProps) {
-    const scheduleDate = new Date(schedule.fecha)
+    const scheduleDate = new Date(schedule.date)
 
     return (
         <div className="flex items-center gap-4 rounded-lg border p-4">
@@ -27,10 +27,10 @@ export function ScheduleItem({ schedule, showDate = true }: ScheduleItemProps) {
                 )}
                 <p className="text-sm text-muted-foreground flex items-center gap-1">
                     <Clock className="h-3 w-3" />
-                    {schedule.horaInicio} - {schedule.horaFin}
+                    {schedule.startTime} - {schedule.endTime}
                 </p>
             </div>
-            <Badge variant={schedule.status ? "default" : "outline"}>{schedule.status ? "Activo" : "Inactivo"}</Badge>
+            <Badge variant={schedule.isActive ? "default" : "outline"}>{schedule.isActive ? "Activo" : "Inactivo"}</Badge>
         </div>
     )
 }

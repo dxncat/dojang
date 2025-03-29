@@ -31,11 +31,11 @@ export const ProfileCard = ({ user }: Props) => {
                     <h2 className="text-2xl font-bold">{user.name}</h2>
                     <p className="text-muted-foreground mb-4">{user.email}</p>
 
-                    <Badge className={`text-md px-3 py-1.5 mb-2 ${getBeltColor(user.rangoActual.nombre)}`}>
-                        {user.rangoActual.nombre}
+                    <Badge className={`text-md px-3 py-1.5 mb-2 ${getBeltColor(user.currentRange.nombre)}`}>
+                        {user.currentRange.nombre}
                     </Badge>
 
-                    <p className="text-sm text-center mt-2">{user.rangoActual.description}</p>
+                    <p className="text-sm text-center mt-2">{user.currentRange.description}</p>
 
                     <div className="w-full mt-6 pt-4 border-t flex items-center justify-center gap-2">
                         <CalendarDays className="h-4 w-4 text-muted-foreground" />
@@ -50,6 +50,7 @@ export const ProfileCard = ({ user }: Props) => {
                             <button className="text-sm text-muted-foreground cursor-pointer">Editar perfil</button>
                             <button className="text-sm text-muted-foreground cursor-pointer">Editar nombre</button>
                             <button className="text-sm text-muted-foreground cursor-pointer">Cambiar contraseña</button>
+                            <button className="text-sm text-muted-foreground cursor-pointer">Historial de pagos</button>
                         </div>
                     </div>
                 </CardContent>

@@ -3,7 +3,7 @@ export interface User {
     email: string;
     name: string;
     image: string;
-    rangoActual: {
+    currentRange: {
         id: number;
         nombre: string;
         description: string;

@@ -1,9 +1,8 @@
 export interface Schedule {
+    rangeId: number;
     id: number;
-    rangoId: number;
-    fecha: Date;
-    horaInicio: string;
-    horaFin: string;
-    status: boolean;
+    date: Date;
+    startTime: string;
+    endTime: string;
+    isActive: boolean;
 }
-

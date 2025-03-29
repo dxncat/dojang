@@ -73,6 +73,7 @@ export const SideBar = () => {
                     </>
                 )}
 
+                <div className='flex md:hidden w-full h-px bg-gray-200 my-10' />
                 <Link
                     href='/nosotros'
                     onClick={closeSideMenu}
@@ -96,7 +97,6 @@ export const SideBar = () => {
                     <Mail size={30} />
                     <span className='ml-3 text-xl'>Contacto</span>
                 </Link>
-                <div className='flex md:hidden w-full h-px bg-gray-200 my-10' />
 
                 {/* Admin */}
                 {

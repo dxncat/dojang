@@ -77,7 +77,7 @@ export const authConfig: NextAuthConfig = {
                         isActive: true,
                         createdAt: true,
                         password: true,
-                        rangoActual: true,
+                        currentRange: true,
                     }
                 })
 

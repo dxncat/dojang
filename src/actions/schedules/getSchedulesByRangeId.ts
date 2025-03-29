@@ -8,9 +8,9 @@ interface Props {
 
 export const getSchedulesByRangeId = async ({ rangeId }: Props) => {
     try {
-        const schedules = await prisma.horario.findMany({
+        const schedules = await prisma.schedule.findMany({
             where: {
-                rangoId: rangeId
+                rangeId: rangeId
             }
         })
 
