@@ -1,4 +1,3 @@
-import { titleFont } from "@/config/fonts"
 import Image from "next/image"
 
 export const Bento = () => {
@@ -7,7 +6,7 @@ export const Bento = () => {
             <section className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 w-full max-w-7xl">
                 <article className="col-span-1 md:col-span-3 lg:col-span-4 overflow-hidden rounded-xl h-[300px] md:h-[400px] relative">
                     <Image
-                        src="/bento.webp"
+                        src="/images/bento.webp"
                         alt="Imagen demostrativa de niña entrenando."
                         fill
                         className="object-cover"

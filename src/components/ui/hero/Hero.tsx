@@ -7,7 +7,7 @@ export const Hero = () => {
 
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/hero.webp"
+                    src="/images/hero.webp"
                     alt="imagen ilustrativa de taekwondo"
                     className="object-cover brightness-50"
                     priority
