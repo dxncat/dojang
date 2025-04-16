@@ -22,7 +22,7 @@ export const Bento = () => {
                 </article>
 
                 <article className="col-span-1 md:col-span-1 lg:col-span-2 rounded-xl overflow-hidden h-[250px] md:h-[280px] relative">
-                    <Image src="/map.webp" alt="Ubicación de la academia Dojang." fill className="object-cover" />
+                    <Image src="/images/map.webp" alt="Ubicación de la academia Dojang." fill className="object-cover" />
                 </article>
 
                 <article className="col-span-1 md:col-span-2 lg:col-span-2 overflow-hidden rounded-xl text-center bg-yinmn-blue">
@@ -35,18 +35,18 @@ export const Bento = () => {
                             </li>
                             <li className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full mb-2 sm:mb-4">
                                 <span className="bg-penn-red-400 p-1 sm:p-2 rounded-md mb-1 sm:mb-0 inline-block">Sábados:</span>
-                                <span>8:00am - 12:00pm</span>
+                                <span>8:00am - 2:00pm</span>
                             </li>
                             <li className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full">
                                 <span className="bg-penn-red-400 p-1 sm:p-2 rounded-md mb-1 sm:mb-0 inline-block">Domingos:</span>
-                                <span>10:00am - 12:00pm</span>
+                                <span>Cerrado</span>
                             </li>
                         </ul>
                     </div>
                 </article>
 
                 <article className="col-span-1 md:col-span-2 lg:col-span-2 overflow-hidden rounded-xl h-[250px] md:h-[280px] relative">
-                    <Image src="/family.webp" alt="Familia dojang." fill className="object-cover" />
+                    <Image src="/images/family.webp" alt="Familia dojang." fill className="object-cover" />
                 </article>
             </section>
         </section>

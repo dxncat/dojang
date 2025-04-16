@@ -2,7 +2,7 @@ import Link from "next/link";
 
 interface Props {
     news: {
-        id: string;
+        id: number;
         title: string;
         content: string;
         updatedAt: Date;

@@ -1,0 +1,72 @@
+TALLER DE DOCKER - PROYECTO MONOLITO
+------------------------------------
+
+1. Revisar la versión de Docker instalada:
+   docker --version
+
+2. Revisar la versión de Docker Compose instalada:
+   docker-compose --version
+   En caso de no tener Docker Compose instalado:
+
+   $ sudo apt update
+   $ sudo apt install docker-compose -y
+
+Para este proyecto utilizaremos PostgreSQL y Next.js como monolito.
+Es necesario tener instalados previamente NODE.js y PostgreSQL.
+
+Pasos para configurar y ejecutar el proyecto:
+
+1. Probar la conexión a la base de datos PostgreSQL:
+   - Asegúrate de que el servicio de PostgreSQL esté corriendo.
+   - Configura las credenciales en el archivo `.env`.
+
+2. Instalar las dependencias del proyecto:
+   npm install
+
+3. Ejecutar las migraciones de la base de datos:
+   npx prisma migrate dev --name init
+
+4. Sembrar datos iniciales en la base de datos:
+   npm run seed
+
+5. Iniciar el proyecto en modo desarrollo:
+   npm run dev
+   Accede al navegador en: http://localhost:3000/
+
+6. Construir el proyecto para producción:
+   npm run build
+
+7. Iniciar el proyecto en modo producción:
+   npm start
+
+Estructura del proyecto:
+- Se ignoran las dependencias, logs y variables de entorno:
+  (node_modules, npm-debug.log, .env)
+
+Archivos relevantes:
+- `Dockerfile`: Configuración para construir la imagen del proyecto.
+- `docker-compose.yml`: Configuración para levantar el proyecto junto con PostgreSQL.
+
+.
+├── .env                     # Variables de entorno (no versionado)
+├── .env.template            # Plantilla para las variables de entorno
+├── docker-compose.yml       # Configuración de Docker Compose para levantar servicios
+├── Dockerfile               # Configuración para construir la imagen del proyecto
+├── package.json             # Dependencias y scripts del proyecto
+├── prisma/
+│   ├── schema.prisma        # Esquema de la base de datos
+│   └── migrations/          # Migraciones de Prisma
+├── src/
+│   ├── app/
+│   │   ├── (pages)/         # Páginas principales del proyecto
+│   │   ├── layout.tsx       # Layout principal de la aplicación
+│   │   └── globals.css      # Estilos globales
+│   ├── components/          # Componentes reutilizables
+│   ├── lib/
+│   │   └── prisma.ts        # Configuración del cliente Prisma
+│   ├── seed/
+│   │   ├── database-seed.ts # Script para sembrar datos iniciales
+│   │   └── seed.ts          # Datos iniciales para la base de datos
+│   └── utils/
+│       └── utils.ts         # Utilidades generales
+└── tsconfig.json            # Configuración de TypeScript

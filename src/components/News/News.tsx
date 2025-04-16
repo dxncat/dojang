@@ -3,7 +3,7 @@ import { New } from "./New";
 
 interface Props {
     news: {
-        id: string;
+        id: number;
         title: string;
         content: string;
         updatedAt: Date;

@@ -15,34 +15,34 @@ export const authConfig: NextAuthConfig = {
         newUser: "/auth/register",
     },
     callbacks: {
-        authorized({ auth, request: { nextUrl } }) {
-            const isLoggedIn = !!auth?.user
-            const isAdmin = auth?.user?.isAdmin || false
-            const userRole = isAdmin ? "admin" : "user"
-            const requestedRoute = nextUrl.pathname
+        // authorized({ auth, request: { nextUrl } }) {
+        //     const isLoggedIn = !!auth?.user
+        //     const isAdmin = auth?.user?.isAdmin || false
+        //     const userRole = isAdmin ? "admin" : "user"
+        //     const requestedRoute = nextUrl.pathname
 
-            //rutas publicas (no requieren autenticación)
-            const publicRoutes = ["/", "/auth/login", "/auth/register", "/nosotros", "/contacto", "/precios"]
+        //     //rutas publicas (no requieren autenticación)
+        //     const publicRoutes = ["/", "/auth/login", "/auth/register", "/nosotros", "/contacto", "/precios"]
 
-            //permitir acceso a rutas publicas
-            if (publicRoutes.includes(requestedRoute)) return true
+        //     //permitir acceso a rutas publicas
+        //     if (publicRoutes.includes(requestedRoute)) return true
 
-            //verificar si el usuario esta autenticado
-            if (!isLoggedIn) return Response.redirect(new URL('/auth/login', nextUrl))
+        //     //verificar si el usuario esta autenticado
+        //     if (!isLoggedIn) return Response.redirect(new URL('/auth/login', nextUrl))
 
-            //rutas permitidas protegidas
-            const isPostRoute = requestedRoute.startsWith("/post/")
+        //     //rutas permitidas protegidas
+        //     const isPostRoute = requestedRoute.startsWith("/post/")
 
-            //verificar si el usuario tiene acceso a la ruta
-            const allowedRoutes = allowedRoutesByRole[userRole] || []
+        //     //verificar si el usuario tiene acceso a la ruta
+        //     const allowedRoutes = allowedRoutesByRole[userRole] || []
 
-            //verificar si el usuario tiene acceso a la ruta solicitada
-            if (allowedRoutes.includes(requestedRoute) || isPostRoute) return true
+        //     //verificar si el usuario tiene acceso a la ruta solicitada
+        //     if (allowedRoutes.includes(requestedRoute) || isPostRoute) return true
 
-            //si el usuario no tiene acceso a la ruta, redirigir a la página de inicio
-            return Response.redirect(new URL('/', nextUrl))
+        //     //si el usuario no tiene acceso a la ruta, redirigir a la página de inicio
+        //     return Response.redirect(new URL('/', nextUrl))
 
-        },
+        // },
         jwt({ token, user }) {
             if (user) {
                 token.data = user

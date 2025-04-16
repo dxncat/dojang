@@ -27,7 +27,7 @@ export default function Home() {
             </div>
             <div className="md:flex items-center row-span-5 col-start-4 overflow-hidden rounded-xl">
                 <Image
-                    src={'/us.webp'}
+                    src={'/images/auth.webp'}
                     alt="Imagen de nosotros"
                     width={400}
                     height={1200}

@@ -9,7 +9,7 @@ export default function () {
                 <LoginForm />
                 <div className="relative">
                     <img
-                        src="/auth.webp"
+                        src="/images/auth.webp"
                         alt="imagen representativa de taekwondo"
                         className="w-[400px] h-full hidden rounded-r-2xl md:block object-cover"
                     />
