@@ -10,6 +10,10 @@ export default async function () {
 
     const session = await auth()
 
+    if (!session) {
+        return
+    }
+
     return (
         <div className="min-h-screen p-4">
             <div className="flex justify-between">
