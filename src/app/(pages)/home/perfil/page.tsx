@@ -1,12 +1,17 @@
-import { getNewsByUserid, getRangeHistoryByUser, getUserHours } from "@/actions";
+import { getRangeHistoryByUser } from "@/actions";
 import { auth } from "@/auth.config";
 import { HistoryRange, ProfileCard } from "@/components";
+import { redirect } from "next/navigation";
 
 export default async function ProfilePage() {
 
     const session = await auth()
 
     const history = await getRangeHistoryByUser({ userId: session?.user.id || '' })
+
+    if (!session) {
+        return redirect('/auth/login')
+    }
 
     return (
         <div className="container mx-auto py-4 sm:py-6 md:py-8 px-2 sm:px-4">
