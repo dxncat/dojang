@@ -20,7 +20,7 @@ export default async function RootLayout({
     return (
         <html lang="es">
             <body
-                className={`${bodyFont.className} antialiased  bg-black-300 text-white`}
+                className={`${bodyFont.className} antialiased  bg-gradient-to-br from-background to-muted`}
             >
                 <Provider >
                     <Navbar />
