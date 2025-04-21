@@ -4,7 +4,7 @@ import { Menu } from "./Menu";
 
 export const Navbar = () => {
     return (
-        <nav className="flex p-2 justify-between items-center w-full bg-black-500 ">
+        <nav className="flex p-2 justify-between items-center w-full bg-background/95 backdrop-blur">
 
             {/* Logo */}
             <div>
