@@ -4,7 +4,7 @@ import { titleFont } from "@/config/fonts"
 
 export const Footer = () => {
     return (
-        <footer className="py-12 bg-yinmn-blue-100 text-gray-300">
+        <footer className="py-12 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container px-4 w-full mx-auto">
                 <div className="grid gap-8 md:grid-cols-3">
                     <div>
