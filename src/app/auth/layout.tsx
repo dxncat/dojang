@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { bodyFont } from "@/config/fonts";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 export const metadata: Metadata = {
     title: "Inicia sesión - Dojang",
@@ -21,11 +22,19 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="es">
+        <html lang="es" suppressHydrationWarning>
+
             <body
                 className={`flex flex-col items-center justify-center flex-1 px-20 text-center h-screen ${bodyFont.className} antialiased  bg-gray-800 text-white`}
             >
-                {children}
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     );
