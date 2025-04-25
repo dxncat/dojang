@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Footer, Navbar, Provider, SideBar } from "@/components";
 import { bodyFont } from "@/config/fonts";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 export const metadata: Metadata = {
     title: {
@@ -20,14 +21,21 @@ export default async function RootLayout({
     return (
         <html lang="es">
             <body
-                className={`${bodyFont.className} antialiased  bg-gradient-to-br from-background to-muted`}
+                className={`${bodyFont.className} antialiased bg-gradient-to-br from-background to-muted`}
             >
-                <Provider >
-                    <Navbar />
-                    <SideBar />
-                    {children}
-                    <Footer />
-                </Provider>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <Provider >
+                        <Navbar />
+                        <SideBar />
+                        {children}
+                        <Footer />
+                    </Provider>
+                </ThemeProvider>
             </body>
         </html>
     );
