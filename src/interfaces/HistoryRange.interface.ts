@@ -1,5 +1,5 @@
 export interface HistoryRange {
-    id: string;
+    id: number;
     createdAt: Date;
     userId: string;
     range: {
