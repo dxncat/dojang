@@ -1,4 +1,4 @@
->[!WARNING]
+>[!WARNING] - (SOLVED)
 Se presenta error al cargar imágenes en carpeta publica
 
 >[!WARNING]
