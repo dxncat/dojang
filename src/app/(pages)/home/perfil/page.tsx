@@ -9,8 +9,8 @@ export default async function ProfilePage() {
 
     const history = await getRangeHistoryByUser({ userId: session?.user.id || '' })
 
-    if (!session) {
-        return redirect('/auth/login')
+    if (!session?.user) {
+        redirect('/auth/login')
     }
 
     return (
