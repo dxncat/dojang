@@ -3,6 +3,7 @@ import { auth } from "@/auth.config";
 import { NewsComponent } from "@/components";
 import { titleFont } from "@/config/fonts";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function () {
 
@@ -10,8 +11,8 @@ export default async function () {
 
     const session = await auth()
 
-    if (!session) {
-        return
+    if (!session?.user) {
+        redirect('/auth/login')
     }
 
     return (
