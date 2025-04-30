@@ -8,8 +8,8 @@ export default async function SchedulePage() {
 
     const session = await auth();
 
-    if (!session) {
-        return redirect('/auth/login');
+    if (!session?.user) {
+        redirect('/auth/login')
     }
 
     const schedules = await getSchedulesByRangeId({ rangeId: session.user.currentRange.id });
