@@ -1,6 +1,7 @@
 import { titleFont } from "@/config/fonts";
 import Link from "next/link";
 import { Menu } from "./Menu";
+import { ThemeToggle } from "../toggles/ThemeToggle";
 
 export const Navbar = () => {
     return (
@@ -31,6 +32,7 @@ export const Navbar = () => {
             </div>
 
             {/* Icons */}
+            <ThemeToggle />
             <Menu />
 
         </nav>

@@ -19,7 +19,7 @@ export default async function RootLayout({
 }>) {
 
     return (
-        <html lang="es">
+        <html lang="es" suppressHydrationWarning>
             <body
                 className={`${bodyFont.className} antialiased bg-gradient-to-br from-background to-muted`}
             >
