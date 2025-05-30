@@ -32,8 +32,10 @@ export const Navbar = () => {
             </div>
 
             {/* Icons */}
-            <ThemeToggle />
-            <Menu />
+            <div className="flex items-center space-x-4">
+                <ThemeToggle />
+                <Menu />
+            </div>
 
         </nav>
     );
